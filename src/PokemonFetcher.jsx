@@ -47,7 +47,7 @@ function PokemonFetcher() {
         return <p>Cargando Pokémon...</p>;
     }
     if(error) {
-        return <p>Oops! You need to insert the disk [UP YOUR ASS]: {error}</p>;
+        return <p>Error: {error}</p>;
     }
 
     return (
