@@ -63,6 +63,11 @@ function PokemonFetcher() {
             ) {
                 listaPkmn = dex.filter(pkmn => pkmn.name.slice(-inputValue.length) == inputValue);
                 inputValue === "mega" ? listaPkmn.unshift(dex[153]) : null;
+                if(inputValue === "paldea") {
+                    listaPkmn.unshift(dex[1276]);
+                    listaPkmn.unshift(dex[1275]);
+                    listaPkmn.unshift(dex[1274]);
+                }
 
             } else listaPkmn = dex.filter(pkmn => pkmn.name.slice(0, inputValue.length) == inputValue.toLowerCase());
             const fetchedPokemon = [];
