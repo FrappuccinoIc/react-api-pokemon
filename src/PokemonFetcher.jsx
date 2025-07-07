@@ -53,8 +53,18 @@ function PokemonFetcher() {
         try {
             setCargando(true);
             setError(null);
-            
-            const listaPkmn = dex.filter(pkmn => pkmn.name.slice(0, inputValue.length) == inputValue.toLowerCase());
+
+            let listaPkmn = []
+
+            if(
+                inputValue === "mega" || inputValue === "mega-x" || inputValue === "mega-y" || inputValue === "primal" || inputValue === "alola" ||
+                inputValue === "galar" || inputValue === "galar-standard" || inputValue === "galar-zen" || inputValue === "crowned" ||
+                inputValue === "gmax" || inputValue === "hisui" || inputValue === "therian" || inputValue === "paldea"
+            ) {
+                listaPkmn = dex.filter(pkmn => pkmn.name.slice(-inputValue.length) == inputValue);
+                inputValue === "mega" ? listaPkmn.unshift(dex[153]) : null;
+
+            } else listaPkmn = dex.filter(pkmn => pkmn.name.slice(0, inputValue.length) == inputValue.toLowerCase());
             const fetchedPokemon = [];
 
             for (let i = 0; i < listaPkmn.length; i++) {
