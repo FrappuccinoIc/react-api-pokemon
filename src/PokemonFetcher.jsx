@@ -36,10 +36,6 @@ function PokemonFetcher() {
             }
             conseguirDex()
         }
-        // else if(estadoDex === "recibido") {
-        //     console.log(dex[0].results);
-        //     setEstadoDex("terminado")
-        // }
     }, [dex, estadoDex, errorDex]);
 
     if(estadoDex === "error") return (<p>{errorDex}</p>)
@@ -57,8 +53,8 @@ function PokemonFetcher() {
         try {
             setCargando(true);
             setError(null);
-
-            const listaPkmn = dex.filter(pkmn => pkmn.name.slice(0, inputValue.length) == inputValue)
+            
+            const listaPkmn = dex.filter(pkmn => pkmn.name.slice(0, inputValue.length) == inputValue.toLowerCase());
             const fetchedPokemon = [];
 
             for (let i = 0; i < listaPkmn.length; i++) {
